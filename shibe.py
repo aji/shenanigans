@@ -22,6 +22,7 @@ def gen_prefix():
 
 def cmd_shibe(data, buf, args):
     weechat.command(buf, gen_prefix() + args)
+    return weechat.WEECHAT_RC_OK
 
 if __name__ == '__main__':
     import weechat
