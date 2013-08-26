@@ -18,7 +18,7 @@ CMD_ARGS_DESC = '''
 COLORS = ['3','4','6','7','8','9','10','11','12','13']
 
 def gen_prefix():
-    return ' ' * randint(0, 40) + '\3' + choice(COLORS)
+    return ' ' * randint(0, 40) + '\3' + choice(COLORS).rjust(2, "0")
 
 def cmd_shibe(data, buf, args):
     weechat.command(buf, gen_prefix() + args)
