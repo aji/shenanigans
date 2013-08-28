@@ -15,7 +15,7 @@ CMD_ARGS_DESC = '''
                     talking
     wow'''
 
-COLORS = ['3','4','6','7','8','9','10','11','12','13']
+COLORS = ['03','04','06','07','08','09','10','11','12','13']
 
 class pvec:
     def __init__(self, num):
@@ -42,7 +42,7 @@ class pvec:
 spvec = pvec(40)
 
 def gen_prefix():
-    return ' ' * spvec.pick() + '\3' + choice(COLORS).rjust(2, "0")
+    return ' ' * spvec.pick() + '\3' + choice(COLORS)
 
 def cmd_shibe(data, buf, args):
     weechat.command(buf, gen_prefix() + args)
