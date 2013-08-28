@@ -32,14 +32,15 @@ class pvec:
             if r < s:
                 break
         def calc(j, x):
-            fac = (1 - 4.0 / (abs(i - j) + 4.5))
+            fac = (1 - 3.5 / (abs(i - j) + 4.5))
             return x * fac
         self.v = [calc(j, x) for j, x in enumerate(self.v)]
         self.norm()
-        weechat.prnt('', str(self.v))
         return i
 
 spvec = pvec(40)
+for i in range(10):
+    spvec.pick()
 
 def gen_prefix():
     return ' ' * spvec.pick() + '\3' + choice(COLORS)
