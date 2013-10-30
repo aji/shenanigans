@@ -29,20 +29,22 @@ def wrap(w, ln):
     if len(s) > 0:
         yield s[1:]
 
-def send_line(b, ln):
-    weechat.command(b, '/say ' + ln)
-
 def cmd_wrap(data, buf, args):
     width = 70
     text = args
+    cmd = '/say '
 
     m = re.match('-(\d+) (.*)', args)
     if m is not None:
         width, text = m.groups()
         width = int(width)
 
+    m = re.match('^(/\S+\s)(.*)', text)
+    if m is not None:
+        cmd, text = m.groups()
+
     for line in wrap(width, text):
-        send_line(buf, line)
+        weechat.command(buf, cmd + line)
 
     return weechat.WEECHAT_RC_OK
 
