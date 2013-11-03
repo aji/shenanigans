@@ -32,17 +32,17 @@ def add_target(buf, dur, cmd):
 
     if buf in targets:
         tgt = targets[buf]
-        weechat.unhook(timer)
-
     else:
         targets[buf] = tgt
-        tgt['cmd'] = cmd
 
-        # call once, since timer won't fire when first set
-        do_rix(buf, 0)
-
+    tgt['cmd'] = cmd
+    first_set = True
+    if 'timer' in tgt:
+        weechat.unhook(tgt['timer'])
+        first_set = False
     tgt['timer'] = weechat.hook_timer(dur, 0, 0, 'do_rix', buf)
-    
+    if first_set: # timer doesn't fire when first set
+        do_rix(buf, 0)
 
 def cancel_target(buf):
     if buf not in targets:
