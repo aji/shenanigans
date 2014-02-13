@@ -20,6 +20,7 @@ base_noun = [
     '/proc', '/dev/null', 'tty', 'regex', 'sed', 'vim', 's/// operation',
     'operation', 'port scanner', 'port scan', 'lookup table', 'anti-<noun>',
     '<verber> manual', '<verber> config', 'IRC', 'IRC bot', 'bootloader',
+    'GNU/<noun>',
 ]
 
 
