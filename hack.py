@@ -279,16 +279,21 @@ def indefinite_articles(s):
     s = re.sub('([aA])\\(n\\) ', '\\1 ', s)
     return s
 
-def get_advice():
-    s = get_base_advice()
+def evaluate(s):
     while can_reduce(s):
         s = reduction(s)
     s = indefinite_articles(s)
     s = s[0].upper() + s[1:]
     return s
 
+def get_advice():
+    return evaluate(get_base_advice())
+
 if __name__ == '__main__':
-    print(get_advice())
+    if len(sys.argv) > 1:
+        print(evaluate(sys.argv[1]))
+    else:
+        print(get_advice())
 
 def cmd_hack(data, buf, args):
     weechat.command(buf, '/say ' + get_advice())
