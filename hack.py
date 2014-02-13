@@ -291,7 +291,7 @@ if __name__ == '__main__':
     print(get_advice())
 
 def cmd_hack(data, buf, args):
-    weechat.command(buf, '/say ' + get_advice().lower())
+    weechat.command(buf, '/say ' + get_advice())
     return weechat.WEECHAT_RC_OK
 
 try:
