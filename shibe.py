@@ -42,8 +42,17 @@ spvec = pvec(40)
 for i in range(10):
     spvec.pick()
 
+last_color = '00'
+
 def gen_prefix():
-    return ' ' * spvec.pick() + '\3' + choice(COLORS)
+    global last_color
+
+    color = choice(COLORS)
+    while color == last_color:
+        color = choice(COLORS)
+
+    last_color = color 
+    return ' ' * spvec.pick() + '\3' + color
 
 def cmd_shibe(data, buf, args):
     weechat.command(buf, gen_prefix() + args)
