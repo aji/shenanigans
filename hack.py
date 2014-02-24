@@ -268,10 +268,16 @@ def reduction(s):
     for i, word in enumerate(s):
         if i % 2 == 0:
             continue
+        up = False
+        if all(x in string.ascii_uppercase for x in word):
+            up = True
+            word = word.lower()
         if not word in index_get:
             word = '?' + word
         else:
             word = index_get[word]()
+        if up:
+            word = word.upper()
         s[i] = word
     return ''.join(s)
 
