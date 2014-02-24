@@ -282,7 +282,7 @@ def reduction(s):
     return ''.join(s)
 
 def indefinite_articles(s):
-    s = re.sub('([aA])\\([nN]\\) ([AEFHILMNORSXaeiou])', '\\1n \\2', s)
+    s = re.sub('([aA])\\(([nN])\\) ([AEFHILMNORSXaeiou])', '\\1\\2 \\3', s)
     s = re.sub('([aA])\\([nN]\\) ', '\\1 ', s)
     return s
 
